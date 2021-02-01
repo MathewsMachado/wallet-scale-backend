@@ -16,6 +16,12 @@ class Database {
 
     this.client.connect();
   }
+
+  async query(statement, values) {
+    const { rows } = await this.client.query(statement, values);
+
+    return rows;
+  }
 }
 
 module.exports = new Database();
