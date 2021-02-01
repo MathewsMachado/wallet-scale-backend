@@ -1,6 +1,34 @@
 const { v4 } = require('uuid');
 
 class GenerateTransactions {
+  getRandomDescription(descriptions) {
+    const max = descriptions.length;
+    const randomIndex = Math.floor(Math.random() * max);
+
+    return descriptions[randomIndex];
+  }
+
+  generateRandomValue() {
+    const randomValue = new Date().getMilliseconds() * Math.random();
+    return randomValue.toFixed(2);
+  }
+
+  isTransactionValid() {
+    const randomBoolean = Boolean(
+      Math.round(Math.random()),
+    );
+
+    return randomBoolean && randomBoolean;
+  }
+
+  fillDateChunk(dateChunk) {
+    return dateChunk.toString().padStart(2, '0');
+  }
+
+  formatDate(year, month, day) {
+    return `${year}/${this.fillDateChunk(month)}/${this.fillDateChunk(day)}`;
+  }
+
   generate(mockup) {
     const currentYear = new Date().getFullYear();
     const years = [currentYear - 1, currentYear, currentYear + 1];
@@ -31,34 +59,6 @@ class GenerateTransactions {
 
     return transactions;
   }
-
-  getRandomDescription(descriptions) {
-    const max = descriptions.length;
-    const randomIndex = Math.floor(Math.random() * max);
-
-    return descriptions[randomIndex];
-  }
-
-  generateRandomValue() {
-    const randomValue = new Date().getMilliseconds() * Math.random();
-    return randomValue.toFixed(2);
-  }
-
-  isTransactionValid() {
-    const randomBoolean = Boolean(
-      Math.round(Math.random()),
-    );
-
-    return randomBoolean && randomBoolean;
-  }
-
-  fillDateChunk(dateChunk) {
-    return dateChunk.toString().padStart(2, '0');
-  }
-
-  formatDate(year, month, day) {
-    return `${year}/${this.fillDateChunk(month)}/${this.fillDateChunk(day)}`;
-  }
 }
 
-module.exports = new GenerateTransactions().generate;
+module.exports = new GenerateTransactions();
