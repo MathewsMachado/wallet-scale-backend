@@ -8,7 +8,5 @@ CREATE TABLE IF NOT EXISTS transactions(
   description VARCHAR NOT NULL,
   type transaction_type NOT NULL,
   value NUMERIC(9, 2) NOT NULL,
-  date DATE NOT NULL,
-  created_at TIME NOT NULL DEFAULT CURRENT_TIME,
-  updated_at TIME NOT NULL DEFAULT CURRENT_TIME
+  date DATE NOT NULL
 );
