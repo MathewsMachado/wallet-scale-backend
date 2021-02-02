@@ -12,6 +12,6 @@ const app = express();
 
 app.use(express.json());
 app.use(routes);
-app.use(ErrorMiddleware);
+app.use(ErrorMiddleware.handleError);
 
 app.listen(APP_PORT);
