@@ -43,6 +43,18 @@ class TransactionController {
 
     response.status(200).json(transactions);
   }
+
+  async show(request, response) {
+    const { id } = request.params;
+
+    const transaction = await TransactionRepository.findById(id);
+
+    if (!transaction) {
+      return response.status(404).json({ error: 'Transaction not found' });
+    }
+
+    response.status(200).json(transaction);
+  }
 }
 
 module.exports = new TransactionController();

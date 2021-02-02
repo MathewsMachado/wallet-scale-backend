@@ -17,6 +17,16 @@ class TransactionRepository {
 
     return rows;
   }
+
+  async findById(id) {
+    const [row] = await Database.query(
+      `SELECT * FROM transactions
+      WHERE id = $1`,
+      [id],
+    );
+
+    return row;
+  }
 }
 
 module.exports = new TransactionRepository();

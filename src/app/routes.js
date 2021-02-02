@@ -6,5 +6,6 @@ const routes = Router();
 
 routes.post('/transactions', TransactionController.store);
 routes.get('/transactions', TransactionController.index);
+routes.get('/transactions/:id', TransactionController.show);
 
 module.exports = routes;
