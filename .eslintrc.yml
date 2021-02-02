@@ -10,5 +10,6 @@ rules: {
   class-methods-use-this: off,
   no-console: off,
   no-unused-vars: [error, { argsIgnorePattern: 'next' }],
-  object-curly-newline: off
+  object-curly-newline: off,
+  consistent-return: off
 }
