@@ -35,7 +35,7 @@ class TransactionController {
       id: v4(),
     });
 
-    response.status(200).json(transaction);
+    response.status(201).json(transaction);
   }
 
   async index(request, response) {
