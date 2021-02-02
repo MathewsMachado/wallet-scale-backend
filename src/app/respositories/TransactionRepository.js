@@ -11,6 +11,12 @@ class TransactionRepository {
 
     return row;
   }
+
+  async findAll() {
+    const rows = await Database.query('SELECT * FROM transactions');
+
+    return rows;
+  }
 }
 
 module.exports = new TransactionRepository();

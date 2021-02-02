@@ -5,5 +5,6 @@ const TransactionController = require('./controllers/TransactionController.js');
 const routes = Router();
 
 routes.post('/transactions', TransactionController.store);
+routes.get('/transactions', TransactionController.index);
 
 module.exports = routes;

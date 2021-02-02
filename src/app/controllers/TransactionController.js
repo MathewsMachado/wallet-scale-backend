@@ -37,6 +37,12 @@ class TransactionController {
 
     response.status(200).json(transaction);
   }
+
+  async index(request, response) {
+    const transactions = await TransactionRepository.findAll();
+
+    response.status(200).json(transactions);
+  }
 }
 
 module.exports = new TransactionController();
