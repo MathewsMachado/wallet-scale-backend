@@ -55,6 +55,36 @@ class TransactionController {
 
     response.status(200).json(transaction);
   }
+
+  async update(request, response) {
+    const { id } = request.params;
+    const { body } = request;
+
+    if (!body.category && !body.description && !body.type && !body.value && !body.date) {
+      return response.status(400).json(
+        { error: 'At least one parameter must be informed to update' },
+      );
+    }
+
+    const transactionExists = await TransactionRepository.findById(id);
+
+    if (!transactionExists) {
+      return response.status(404).json({ error: 'Transaction not found' });
+    }
+
+    // This allows api consumer to not send all the transaction fields
+    const newTransaction = {
+      category: body.category || transactionExists.category,
+      description: body.description || transactionExists.description,
+      type: body.type || transactionExists.type,
+      value: body.value || transactionExists.value,
+      date: body.date || transactionExists.date,
+    };
+
+    const transaction = await TransactionRepository.update(id, newTransaction);
+
+    response.status(200).json(transaction);
+  }
 }
 
 module.exports = new TransactionController();

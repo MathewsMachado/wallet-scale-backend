@@ -27,6 +27,18 @@ class TransactionRepository {
 
     return row;
   }
+
+  async update(id, { category, description, type, value, date }) {
+    const [row] = await Database.query(
+      `UPDATE transactions
+      SET category = $1, description = $2, type = $3, value = $4, date = $5
+      WHERE id = $6
+      RETURNING *`,
+      [category, description, type, value, date, id],
+    );
+
+    return row;
+  }
 }
 
 module.exports = new TransactionRepository();
