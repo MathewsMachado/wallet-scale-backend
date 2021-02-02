@@ -85,6 +85,18 @@ class TransactionController {
 
     response.status(200).json(transaction);
   }
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    const contact = await TransactionRepository.delete(id);
+
+    if (!contact) {
+      return response.status(404).json({ error: 'Transaction not found' });
+    }
+
+    response.sendStatus(204);
+  }
 }
 
 module.exports = new TransactionController();

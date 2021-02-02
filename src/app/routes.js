@@ -8,5 +8,6 @@ routes.post('/transactions', TransactionController.store);
 routes.get('/transactions', TransactionController.index);
 routes.get('/transactions/:id', TransactionController.show);
 routes.put('/transactions/:id', TransactionController.update);
+routes.delete('/transactions/:id', TransactionController.delete);
 
 module.exports = routes;
