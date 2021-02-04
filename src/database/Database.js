@@ -1,22 +1,16 @@
 require('dotenv').config();
 
 const { Client } = require('pg');
+const { parse } = require('pg-connection-string');
 
 const mockup = require('./mockup.js');
-
 const GenerateTransactions = require('../app/utils/GenerateTransactions.js');
 
-const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } = process.env;
+const { DATABASE_URL } = process.env;
 
 class Database {
   constructor() {
-    this.client = new Client({
-      host: DB_HOST,
-      port: DB_PORT,
-      user: DB_USER,
-      password: DB_PASSWORD,
-      database: DB_DATABASE,
-    });
+    this.client = new Client(parse(DATABASE_URL));
 
     this.client.connect();
     this.populateTransactionsTable();
