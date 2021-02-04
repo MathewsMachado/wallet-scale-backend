@@ -6,11 +6,17 @@ const { parse } = require('pg-connection-string');
 const mockup = require('./mockup.js');
 const GenerateTransactions = require('../app/utils/GenerateTransactions.js');
 
-const { DATABASE_URL } = process.env;
+const { NODE_ENV, DATABASE_URL } = process.env;
 
 class Database {
   constructor() {
-    this.client = new Client(parse(DATABASE_URL));
+    const databaseUrlConnection = (
+      NODE_ENV === 'development'
+      ? parse(DATABASE_URL)
+      : { ...parse(DATABASE_URL), ssl: { rejectUnauthorized: false } }
+    );
+
+    this.client = new Client(databaseUrlConnection);
 
     // couldn't extract it into a function and use async/await
     this.client.connect().then(async () => {

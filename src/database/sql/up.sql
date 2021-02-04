@@ -1,3 +1,4 @@
+-- Heroku doesn't allows to create a database
 CREATE DATABASE wallet_scale;
 
 CREATE TYPE transaction_type as ENUM ('+', '-');

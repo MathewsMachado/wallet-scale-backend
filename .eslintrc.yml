@@ -11,5 +11,6 @@ rules: {
   no-console: off,
   no-unused-vars: [error, { argsIgnorePattern: 'next' }],
   object-curly-newline: off,
-  consistent-return: off
+  consistent-return: off,
+  indent: [error, 2, { "ignoredNodes": ["ConditionalExpression"] }],
 }
