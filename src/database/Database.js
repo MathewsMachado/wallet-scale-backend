@@ -12,8 +12,12 @@ class Database {
   constructor() {
     this.client = new Client(parse(DATABASE_URL));
 
-    this.client.connect();
-    this.populateTransactionsTable();
+    // couldn't extract it into a function and use async/await
+    this.client.connect().then(async () => {
+      console.log('App connected to database');
+
+      await this.populateTransactionsTable();
+    });
   }
 
   async query(statement, values) {
@@ -26,7 +30,7 @@ class Database {
     const [isTableFilled] = await this.query('SELECT * FROM transactions LIMIT 1', []);
 
     if (isTableFilled) {
-      return;
+      return console.log('Transactions table is already populated');
     }
 
     const transactions = GenerateTransactions.generate(mockup);
@@ -39,7 +43,7 @@ class Database {
       );
     });
 
-    console.log('Database was successfully populated');
+    console.log('Transactions table was successfully populated');
   }
 }
 

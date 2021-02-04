@@ -14,4 +14,4 @@ app.use(express.json());
 app.use(routes);
 app.use(ErrorMiddleware.handleError);
 
-app.listen(PORT);
+app.listen(PORT, () => console.log('App is running'));
