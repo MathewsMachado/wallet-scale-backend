@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const { Client } = require('pg');
 const { parse } = require('pg-connection-string');
 
