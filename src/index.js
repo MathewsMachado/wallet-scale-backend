@@ -1,23 +1,16 @@
 require('express-async-errors');
 
-const express = require('express');
-
-const routes = require('./app/routes.js');
-const ErrorMiddleware = require('./utils/ErrorMiddleware.js');
+const Server = require('./app/Server.js');
 const Database = require('./database/Database.js');
 const PopulateTransactionsTable = require('./utils/PopulateTransactionsTable.js');
 
-const { PORT } = process.env;
+(async () => {
+  try {
+    await Database.connect();
+    await PopulateTransactionsTable.populate();
+  } catch (error) {
+    console.log(error);
+  }
 
-const app = express();
-
-app.use(express.json());
-app.use(routes);
-app.use(ErrorMiddleware.handleError);
-
-app.listen(PORT, async () => {
-  console.log('App is running');
-
-  await Database.connect();
-  await PopulateTransactionsTable.populate();
-});
+  Server.run();
+})();
