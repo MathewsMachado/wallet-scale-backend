@@ -2,7 +2,6 @@ const { Client } = require('pg');
 const { parse } = require('pg-connection-string');
 
 const Mockup = require('./Mockup.js');
-const GenerateTransactions = require('../app/utils/GenerateTransactions.js');
 
 const { NODE_ENV, DATABASE_URL } = process.env;
 
@@ -36,7 +35,7 @@ class Database {
       return console.log('Transactions table is already populated');
     }
 
-    const transactions = GenerateTransactions.generate(Mockup.data);
+    const transactions = Mockup.generateTransactions();
 
     transactions.forEach(async ({ id, category, description, type, value, date }) => {
       await this.query(
