@@ -9,7 +9,7 @@ This is also part of my personal portfolio, so I'll be grateful if you give me f
 **Send me an email: [mathews.machadoamorim@gmail.com](mailto:mathews.machadoamorim@gmail.com).**
 
 ## Features
-It main goal is to record/provide data to the Wallet Scale application frontend.
+Its main goal is to record/provide data to the Wallet Scale application frontend.
 
 It only has one endpoint so far — the transactions one — in charge of the CRUD operations of the incomes and expenses.
 
