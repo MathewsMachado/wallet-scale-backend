@@ -4,6 +4,7 @@ const express = require('express');
 
 const routes = require('./app/routes.js');
 const ErrorMiddleware = require('./app/utils/ErrorMiddleware.js');
+const Database = require('./database/Database.js');
 
 const { PORT } = process.env;
 
@@ -13,4 +14,8 @@ app.use(express.json());
 app.use(routes);
 app.use(ErrorMiddleware.handleError);
 
-app.listen(PORT, () => console.log('App is running'));
+app.listen(PORT, async () => {
+  console.log('App is running')
+  await Database.connect();
+  await Database.populateTransactionsTable();
+});

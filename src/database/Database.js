@@ -8,26 +8,25 @@ const { NODE_ENV, DATABASE_URL } = process.env;
 
 class Database {
   constructor() {
-    const databaseUrlConnection = (
+    this.connectionString = (
       NODE_ENV === 'development'
       ? parse(DATABASE_URL)
       : { ...parse(DATABASE_URL), ssl: { rejectUnauthorized: false } }
     );
 
-    this.client = new Client(databaseUrlConnection);
-
-    // couldn't extract it into a function and use async/await
-    this.client.connect().then(async () => {
-      console.log('App connected to database');
-
-      await this.populateTransactionsTable();
-    });
+    this.client = new Client(this.connectionString);
   }
 
   async query(statement, values) {
     const { rows } = await this.client.query(statement, values);
 
     return rows;
+  }
+
+  async connect() {
+    await this.client.connect();
+
+    console.log(`Database is running at port:${this.connectionString.port}`);
   }
 
   async populateTransactionsTable() {
