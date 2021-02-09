@@ -5,7 +5,7 @@
   "repository": "https://github.com/MathewsMachado/wallet-scale-backend.git",
   "author": "Mathews Machado <mathews.machadoamorim@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node -r dotenv/config src/index.js",
     "dev": "nodemon -r dotenv/config  src/index.js",
