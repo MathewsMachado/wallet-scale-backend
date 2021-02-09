@@ -1,10 +1,10 @@
 const { Client } = require('pg');
 const { parse } = require('pg-connection-string');
 
-const { NODE_ENV, DATABASE_URL } = process.env;
-
 class Database {
   constructor() {
+    const { NODE_ENV, DATABASE_URL } = process.env;
+
     this.connectionString = (
       NODE_ENV === 'development'
       ? parse(DATABASE_URL)
