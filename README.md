@@ -29,8 +29,10 @@ cd wallet-scale-backend
 ```
 
 ### Setting up the database
-1. If you are Unix-based OS user, solve the authentication problem first
+1. If you are Unix-based OS user, solve the authentication problem first.
+
 1.1. <https://gist.github.com/AtulKsol/4470d377b448e56468baef85af7fd614>
+
 1.2. <https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge>
 
 2. Connect to postgres
@@ -70,10 +72,13 @@ CREATE TABLE IF NOT EXISTS transactions(
 ```shell
 touch .env
 ```
-2. Set NODE_ENV, PORT and DATABASE_URL values.
-2.1 NODE_ENV={{ development || production }}
-2.2 PORT={{ port.number }}
-2.3 DATABASE_URL=postgres://{{ user.name }}:{{ user.password }}@{{ host.name }}:{{ port.number }}/{{ database.name }}
+2. Set NODE_ENV, PORT and DATABASE_URL values
+
+2.1. NODE_ENV={{ development || production }}
+
+2.2. PORT={{ port.number }}
+
+2.3. DATABASE_URL=postgres://{{ user.name }}:{{ user.password }}@{{ host.name }}:{{ port.number }}/{{ database.name }}
 
 ### Install dependencies
 ```shell
@@ -105,8 +110,8 @@ npm run dev
 
 ## To-do
 1. Create user signin and signup routes.
-2. Create a relation in database between users and transactions.
+2. Create a relation in the database between users and transactions.
 3. Migrate to [TypeScript](https://www.typescriptlang.org/).
 
 ## License
-This project is license under the MIT License - see the [LICENSE](https://github.com/MathewsMachado/wallet-scale-backend/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/MathewsMachado/wallet-scale-backend/blob/master/LICENSE) file for details.
