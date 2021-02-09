@@ -3,7 +3,7 @@ require('express-async-errors');
 const express = require('express');
 
 const routes = require('./app/routes.js');
-const ErrorMiddleware = require('./app/utils/ErrorMiddleware.js');
+const ErrorMiddleware = require('./utils/ErrorMiddleware.js');
 const Database = require('./database/Database.js');
 
 const { PORT } = process.env;
